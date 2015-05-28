@@ -1,0 +1,5 @@
+C:\Users\Nikolai80\Documents\programms\MarkInt\MarkInt\bin\MarkInt.dll
+C:\Users\Nikolai80\Documents\programms\MarkInt\MarkInt\bin\MarkInt.pdb
+C:\Users\Nikolai80\Documents\programms\MarkInt\MarkInt\obj\Debug\MarkInt.csprojResolveAssemblyReference.cache
+C:\Users\Nikolai80\Documents\programms\MarkInt\MarkInt\obj\Debug\MarkInt.dll
+C:\Users\Nikolai80\Documents\programms\MarkInt\MarkInt\obj\Debug\MarkInt.pdb

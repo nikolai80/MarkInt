@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MarkInt</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <body>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Введите свои данные и нажмите кнопку отправить</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="mailto:post-gred@rambler.ru" method="POST" enctype="text/plain">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone3" class="col-sm-2 control-label">Телефон</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" class="form-control" id="inputPhone3" placeholder="Телефон">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal"value="Submit">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End modal-->
+
+
+        <div class="container">
+            <div class="row bottomBorder">
+                <header>
+                    <div class="col-lg-3">
+                        <a href="#">
+                            <h2>MarkInt</h2>
+                        </a>
+                        <h5>
+                            Агентство интернет маркетинга
+                            Работаем по всей РБ
+                        </h5>
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-6">
+                        <h5>+375 (29) 165-20-99</h5>
+                        <button class="btn btn-danger" type="button" data-togle="modal">Заказать звонок</button>
+                    </div>
+                </header>
+
+            </div>
+            <div class="wrapper">
+                <div class="row bottomBorder">
+                    <div class="col-lg-12">
+                        <h4 class=" text-center">Создание продающих сайтов для бизнеса «под ключ» в короткие сроки с гарантией окупаемости за 1 месяц.</h4>
+                    </div>
+                    <div class="col-lg-6">
+                        <img width="250" height="250" />
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Телефон</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" class="form-control" id="inputPhone3" placeholder="Телефон">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" class="btn btn-danger ">Узнать</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="text-center">Почему заказать надо именно у нас?</h2>
+                    <div class="col-lg-3 ">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    <img width="50" height="50" />Гарантия окупаемости за 1 месяц
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <p class="text-justify">Сейчас существует множество маркетинговых и рекламных агентств, их схема работы примерно такая: взять предоплату, сделать как-то и дальше они исчезают. Мы берем на себя ответственность за результат и гарантируем что сайт окупится за месяц, это гарантирует и высокое качество и глубокую проработку каждого проекта, иначе мы вернем вам деньги.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    <img width="50" height="50" />Гарантия сроков
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <p class="text-justify">Помимо того, что другие агентства делают не качественно и не несут никакой ответственности за результат, так еще и, как правило, срывают сроки, из-за чего вы, скорее всего, теряете свои деньги. При работе с нами вы можете быть уверенны что все будет готово к оговоренному сроку ( в среднем 10 дней с момента поступления денег на наш счет). За каждый день просрочки, если такое случится, мы будем возвращать вам по 100 000 рублей.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    <img width="50" height="50" />Делаем именно продающие сайты, а не для имиджа
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <p class="text-justify">Сайт в первую очередь должен продавать клиенту ваш товар или услугу, вашу компанию в целом. Вся наша работа нацелена на то, чтобы ваш сайт продавал: разработка мощных заголовков, из которых клиенту понятно чем вы занимаетесь и сразу же становится интересно, продающие тексты, множество точек захвата с разными формулировками, правильное расположение блоков и еще множество триггеров, позволяющих нам добиться высоких результатов.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    <img width="50" height="50" />Создание сайта «под ключ»
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <p class="text-justify">Предоставляем полный комплекс услуг по созданию сайтов «от А до Я». Он включает в себя упаковку вашего бизнеса (выяснить что главное донести через сайт до вашего клиента), разработку эксклюзивного дизайна, регистрацию доменного имени и хостинга, наполнение сайта информацией, размещение готового сайта на выбранный домен, настройка и запуск рекламы, внедрение аналитики и еще множество инструментов для привлечения и управления потоком клиентов.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <h4>Оставьте заявку прямо сейчас и получите 9 видов скриптов (речевых формулировок) для ваших менеджеров БЕСПЛАТНО!</h4>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone3" class="col-sm-2 control-label">Телефон</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" class="form-control" id="inputPhone3" placeholder="Телефон">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" class="btn btn-danger ">Получить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="text-center">Цены</h2>
+                    <div class="col-lg-3 ">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    Старт
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Упаковка Бизнеса</p>
+                                    </li>
+                                    <li>
+                                        <p>Разработка уникального дизайна</p>
+                                    </li>
+                                    <li>
+                                        <p>Хостинг на 3 месяца</p>
+                                    </li>
+                                    <li>
+                                        <p>Домен на 3 месяца</p>
+                                    </li>
+                                    <li>
+                                        <p>Гарантия конверсии 5%</p>
+                                    </li>
+                                    <li>
+                                        <p>Срок разработки – до 5 дней</p>
+                                    </li>
+                                </ul>
+                                <b>4 900 000</b>
+                                <button type="button" class="btn btn-danger">Оставить заявку</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    Бизнес
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Упаковка Бизнеса</p>
+                                    </li>
+                                    <li>
+                                        <p>Разработка уникального дизайна</p>
+                                    </li>
+                                    <li>
+                                        <p>Хостинг на 6 месяцев</p>
+                                    </li>
+                                    <li>
+                                        <p>Домен на 6 месяцев</p>
+                                    </li>
+                                    <li>
+                                        <p>Маркетинговое исследование рынка</p>
+                                    </li>
+                                    <li>
+                                        <p>Анализ конкурентов</p>
+                                    </li>
+                                    <li>
+                                        <p>Гарантия конверсии 5%</p>
+                                    </li>
+                                    <li>
+                                        <p>Срок разработки – до 7 дней</p>
+                                    </li>
+                                </ul>
+                                <b>7 900 000</b>
+                                <button type="button" class="btn btn-danger">Оставить заявку</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    Про
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Упаковка Бизнеса</p>
+                                    </li>
+                                    <li>
+                                        <p>Разработка уникального дизайна</p>
+                                    </li>
+                                    <li>
+                                        <p>Хостинг на 1 год</p>
+                                    </li>
+                                    <li>
+                                        <p>Домен на 1 год</p>
+                                    </li>
+                                    <li>
+                                        <p>Маркетинговое исследование рынка</p>
+                                    </li>
+                                    <li>
+                                        <p>Исследование и анализ конкурентов</p>
+                                    </li>
+                                    <li>
+                                        <p>Настройка рекламных кампаний в поисковых системах Яндекс и Google</p>
+                                    </li>
+                                    <li>
+                                        <p>Ведение рекламных кампаний 2 недели</p>
+                                    </li>
+                                    <li>
+                                        <p>Установка Яндекс.Метрики</p>
+                                    </li>
+                                    <li>
+                                        <p>Отчетность каждые 3 дня</p>
+                                    </li>
+                                    <li>
+                                        <p>Гарантия окупаемости за 1 месяц</p>
+                                    </li>
+                                    <li>
+                                        <p>Срок разработки – до 10 дней</p>
+                                    </li>
+                                    <li>
+                                        <p>*Рекламный бюджет должен быть не менее 300y.e.</p>
+                                    </li>
+                                </ul>
+                                <b>14 900 000</b>
+                                <button type="button" class="btn btn-danger">Оставить заявку</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="row whyBlock nomargin">
+                            <div class="col-lg-12 grayBottomBorder">
+                                <h4>
+                                    Премиум
+                                </h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Упаковка Бизнеса</p>
+                                    </li>
+                                    <li>
+                                        <p>Разработка уникального дизайна</p>
+                                    </li>
+                                    <li>
+                                        <p>Хостинг на 2 года</p>
+                                    </li>
+                                    <li>
+                                        <p>Домен на 2 года</p>
+                                    </li>
+                                    <li>
+                                        <p>Маркетинговое исследование рынка</p>
+                                    </li>
+                                    <li>
+                                        <p>Исследование и анализ конкурентов</p>
+                                    </li>
+                                    <li>
+                                        <p>Настройка рекламных кампаний в поисковых системах Яндекс и Google</p>
+                                    </li>
+                                    <li>
+                                        <p>Ведение рекламных кампаний 1 месяц</p>
+                                    </li>
+                                    <li>
+                                        <p>Установка Яндекс.Метрики</p>
+                                    </li>
+                                    <li>
+                                        <p>Разметка ссылок и всех ключевиков UTM-метками</p>
+                                    </li>
+                                    <li>
+                                        <p>А/Б тестирование сайта 1 месяц</p>
+                                    </li>
+                                    <li>
+                                        <p>Отчетность каждый день</p>
+                                    </li>
+                                    <li>
+                                        <p>Гарантия окупаемости за 1 месяц</p>
+                                    </li>
+                                    <li>
+                                        <p>Срок разработки – до 15 дней</p>
+                                    </li>
+                                    <li>
+                                        <p>*Рекламный бюджет должен быть не менее 500y.e.</p>
+                                    </li>
+                                </ul>
+                                <b>24 900 000</b>
+                                <button type="button" class="btn btn-danger">Оставить заявку</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            *Мы не берем ответственность за конечный денежный результат, если не настраиваем рекламные кампании.
+                        </p>
+                        <p>
+                            *Обязательным условием является заполнение брифа (для всех наших клиентов) который придет к вам на почту.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <a href="#">
+                            <h4>MarkInt</h4>
+                        </a>
+                        <h5>
+                            Агентство интернет маркетинга
+                            Работаем по всей РБ
+                        </h5>
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-6">
+                        <h4>+375 (29) 165-20-99</h4>
+                        <p>
+                            Звонить с 9.00 до 18.00
+                            Работаем без выходных
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/js/jquery-1.11.3.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+    $(document).ready(function () {
+        $(".btn").click(function () {
+            $("#myModal").modal('show');
+        });
+    });
+        </script>
+    </body>
+</html>

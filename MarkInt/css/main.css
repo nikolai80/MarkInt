@@ -1,0 +1,9 @@
+﻿.footer{ display: block;}
+
+.bottomBorder{ border-bottom: solid #eeeeee 2px;}
+.wrapper{}
+.whyBlock{ background: #eeeeee no-repeat;}
+.grayBottomBorder{ border-bottom: 2px solid #c5c5c5;}
+.nomargin {
+	margin: 0;
+}
