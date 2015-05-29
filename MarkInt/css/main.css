@@ -8,6 +8,10 @@
 	margin: 0;
 }
 
+.nopadding{ padding-left: 0;
+	padding-right: 0;
+}
+
 .headerPhone {
 	margin-top: 20px;
 }
@@ -20,10 +24,27 @@ h2 {
 
 }
 
-.whyTitle{ height: 50px;
+.whyTitle{ height: 78px;
 	overflow: hidden;
 }
 .whyTitleImg{ height: 100px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.priceButton{ margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.priceProBlock {
+	background-color:#ffa500;
+	background-color: rgba(255, 165, 0, 0.48);
+	color: #ffffff;
+	color: rgba(255, 255, 255, 1);
+}
+
+ .priceNoteBlock{ margin-bottom: 20px;
+	 margin-top: 10px;
+ }
+
+ .priceListImage{ height: 20px;}
