@@ -15,3 +15,15 @@
 h2 {
 	font-family: fantasy !important;
 }
+.formFindOut {
+	padding: 20% 0;
+
+}
+
+.whyTitle{ height: 50px;
+	overflow: hidden;
+}
+.whyTitleImg{ height: 100px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
