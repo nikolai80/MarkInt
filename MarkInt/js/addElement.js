@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     $(".btnAddElement").click(function () {
-        $("body").append("<div id='newDiv'>New div</div>")
-       
+	    $("body").append("<div class='newDiv'>New div</div>");
     });
-    $("#newDiv").addClass("newDiv");
+    
 })
