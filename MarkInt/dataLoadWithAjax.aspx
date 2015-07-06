@@ -20,7 +20,7 @@
    </div></form> 
     <script type="text/javascript">
         $(Document).ready(function() {
-            GetData();
+            $('#ddlCountries').change(GetData()) ;
         });
         function GetData() {
             $.ajax({
