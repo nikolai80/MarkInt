@@ -21,7 +21,29 @@
         <li>Пункт №10</li>
     </ul>
 </div>
+    <form id="form1" runat="server">
+    <input id="btnClick" type="button" value="Ajax Call" />
+    <div id="display">
+    </div>
+    </form>
     <script src="js/jquery-1.11.3.js"></script>
     <script src="js/dropDownList.js"></script>
+    
+        <script type="text/javascript" >
+    jQuery(function() {
+        $('#btnClick').click(function(){
+            jQuery.ajax({
+                type : "GET",
+                url : "Data.ashx",
+                data : "MethodName=GetData",
+                success : function(data){
+                    $('#display').html("<h1> Hi, " + data.FirstName + " " + 
+                      data.LastName + " your Blog Address is http://" + 
+                      data.Blog + "</h1>");
+                   }
+        });
+        });
+    });
+</script>
 </body>
 </html>
