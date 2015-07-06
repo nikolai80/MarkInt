@@ -9,7 +9,7 @@
 </head>
 <body>
 <h3>Load data with ajax</h3>
-    
+   <form runat="server">
    <div class="contentData">
        <asp:DropDownList runat="server" ID="ddlCountries"/>
        <table><tr class="tblHeader"><th>Товар</th>
@@ -17,7 +17,7 @@
               </tr>
            
        </table>
-   </div>
+   </div></form> 
     <script type="text/javascript">
         $(Document).ready(function() {
             GetData();
