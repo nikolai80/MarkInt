@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,51 +12,29 @@ using System.Web.UI.WebControls;
 
 public partial class dataLoadWithAjax : System.Web.UI.Page
 {
+	private string connect = "Server=(LocalDB)\\v11.0;Initial Catalog=D:\\Lichnoe\\Documents\\MarkInt\\MarkInt\\App_Data\\GoodsDB.mdf;Integrated Security=True";
+	string query = "SELECT countryID, name FROM Countries";
     protected void Page_Load(object sender, EventArgs e)
     {
-	if(!IsPostBack)
-		{
-		BindDummyRow();
-		}
+
+	    if (!Page.IsPostBack)
+	    {
+		    BindData();
+	    }
     }
 
-	private void BindDummyRow()
+	private void BindData()
 		{
-		DataTable dummy = new DataTable();
-		dummy.Columns.Add("goodsID");
-		dummy.Columns.Add("name");
-		dummy.Columns.Add("countryID");
-		dummy.Rows.Add();
-		gvCustomers.DataSource = dummy;
-		gvCustomers.DataBind();
-		}
-
-	[WebMethod]
-	private static string GetData()
-	{
-	string strConnString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
-	using(SqlConnection con = new SqlConnection(strConnString))
-		{
-		using(SqlDataAdapter sda = new SqlDataAdapter())
+		using(SqlConnection conn = new SqlConnection(connect))
 			{
-			cmd.Connection = con;
-			sda.SelectCommand = cmd;
-			using(DataSet ds = new DataSet())
+			using(SqlCommand cmd = new SqlCommand(query, conn))
 				{
-				sda.Fill(ds, "Customers");
-				DataTable dt = new DataTable("Pager");
-				dt.Columns.Add("PageIndex");
-				dt.Columns.Add("PageSize");
-				dt.Columns.Add("RecordCount");
-				dt.Rows.Add();
-				dt.Rows[0]["PageIndex"] = pageIndex;
-				dt.Rows[0]["PageSize"] = PageSize;
-				dt.Rows[0]["RecordCount"] = cmd.Parameters["@RecordCount"].Value;
-				ds.Tables.Add(dt);
-				return ds;
+				conn.Open();
+				ddlCountries.DataSource = cmd.ExecuteReader();
+				ddlCountries.DataValueField = "countryID";
+				ddlCountries.DataTextField = "name";
+				ddlCountries.DataBind();
 				}
 			}
 		}
-		return "";
-	}
 }
