@@ -4,35 +4,62 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Load data with ajax</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+
 </head>
 <body>
-<h3>Load data with ajax</h3>
-   <form runat="server">
-   <div class="contentData">
-       <asp:DropDownList runat="server" ID="ddlCountries"/>
-       <table><tr class="tblHeader"><th>Товар</th>
-           <th>Страна</th>
-              </tr>
-           
-       </table>
-   </div></form> 
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1">
+        <h3>Load data with ajax</h3>
+    </div></div>
+    <div class="row">
+    <form runat="server">
+        <div class="contentData col-lg-4 col-lg-offset-1">
+            <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-4" />
+            <table class="tableData table">
+                <tr class="tblHeader">
+                    <th>Товар</th>
+                    <th>Страна</th>
+                </tr>
+
+            </table>
+        </div>
+    </form>
+        <asp:DropDownList runat="server" ID="city"/>
+    </div>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.11.3.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
-        $(Document).ready(function() {
-            $('#ddlCountries').change(GetData()) ;
+        $(document).ready(function () {
+            console.log("Перед выбором списка");
+            $('#ddlCountries').change(function () {
+                //console.log("ID страны "+$('#ddlCountries').val());
+                GetData();
+            });
+
         });
         function GetData() {
+            console.log("Перед срабатыванием ajax");
+            $('.tableData').find("tr:gt(0)").remove();
             $.ajax({
-                type: "POST",
+                type: "GET",
                 contentType: "application/json; charset=utf-8",
-                data: "{}",
+                data: "CountryID=" + $('#ddlCountries').val(),
                 url: "getDataHandler.ashx",
-                dataType: "json",
-                success: function(data) {
+                dataType: "html",
+                success: function (html) {
+                    console.log("Сработал ajax");
+                    $('.tableData').append(html);
                 }
             });
-        }
+        };
     </script>
 </body>
 </html>
