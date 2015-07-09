@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="dataLoadWithAjax.aspx.cs" Inherits="dataLoadWithAjax" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,8 +27,9 @@
 
             </table>
         </div>
+        <asp:DropDownList runat="server" ID="city" />
     </form>
-        <asp:DropDownList runat="server" ID="city"/>
+        
     </div>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -42,6 +43,7 @@
             $('#ddlCountries').change(function () {
                 //console.log("ID страны "+$('#ddlCountries').val());
                 GetData();
+                GetCities();
             });
 
         });
@@ -57,6 +59,19 @@
                 success: function (html) {
                     console.log("Сработал ajax");
                     $('.tableData').append(html);
+                }
+            });
+        };
+        function GetCities() {
+            $('#city').find("option").remove();
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: "CountryID=" + $('#ddlCountries').val(),
+                url: "cityHandler.ashx",
+                dataType: "html",
+                success: function (html) {
+                    $('#city').append(html);
                 }
             });
         };
