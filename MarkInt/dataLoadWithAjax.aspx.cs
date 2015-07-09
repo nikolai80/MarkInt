@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 public partial class dataLoadWithAjax : System.Web.UI.Page
 {
-	private string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\rybchenko\programs\MarktInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
+	private string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Lichnoe\Documents\MarkInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
 	string query = "SELECT countryID, name FROM Countries";
     protected void Page_Load(object sender, EventArgs e)
     {
