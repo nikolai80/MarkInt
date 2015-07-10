@@ -4,12 +4,13 @@ using System;
 using System.Data.SqlClient;
 using System.Web;
 
+
 public class getDataHandler : IHttpHandler {
     
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/html";
         //context.Response.Write("<span>Hello World</span>");
-        string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Lichnoe\Documents\MarkInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
+        string connect = Constants.conString;
 	string query = "SELECT g.name as name, c.name AS country FROM Goods g Left JOIN Countries c ON g.countryID=c.countryID WHERE g.countryID=@CountryID";
 	    string countryId = context.Request.QueryString["CountryID"];
 
@@ -29,6 +30,7 @@ public class getDataHandler : IHttpHandler {
                             context.Response.Write("<tr>");
                             context.Response.Write("<td>" + rdr["name"].ToString() + "</td>");
                             context.Response.Write("<td>"+rdr["country"].ToString() + "</td>");
+                            context.Response.Write("<td><a id=\"linkOrder\">Заказать</></td>");
                             context.Response.Write("</tr>");
                            
                             }

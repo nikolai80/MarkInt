@@ -22,11 +22,23 @@
                 <tr class="tblHeader">
                     <th>Товар</th>
                     <th>Страна</th>
+                    <th>Заказать</th>
                 </tr>
 
             </table>
         </div>
-        <asp:DropDownList runat="server" ID="city" />
+        <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
+        
+        <div class="shoppingCart row">
+            <table class="tableData table col-lg-5 col-lg-offset-1">
+                <tr>
+                    <th>№ карты</th>
+                    <th>Наименование товара</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+
     </form>
         
     </div>

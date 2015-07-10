@@ -9,7 +9,7 @@ public class cityHandler : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/html";
         //context.Response.Write("<span>Hello World</span>");
-        string connect = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Lichnoe\Documents\MarkInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
+	    string connect = Constants.conString;
         string query = "SELECT cityID,countryID, city FROM Cities WHERE countryID=@CountryID";
         string countryId = context.Request.QueryString["CountryID"];
 
