@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="dataLoadWithAjax.aspx.cs" Inherits="dataLoadWithAjax" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,39 +11,41 @@
 
 </head>
 <body>
-<div class="row">
-    <div class="col-lg-4 col-lg-offset-1">
-        <h3>Load data with ajax</h3>
-    </div></div>
     <div class="row">
-    <form runat="server">
-        <div class="contentData col-lg-4 col-lg-offset-1">
-            <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-4" />
-            <table class="tableData table">
-                <tr class="tblHeader">
-                    <th>Товар</th>
-                    <th>Страна</th>
-                    <th>Заказать</th>
-                </tr>
-
-            </table>
+        <div class="col-lg-4 col-lg-offset-1">
+            <h3>Load data with ajax</h3>
         </div>
-        <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
-        
-        <div class="shoppingCart row">
-            <table class="tableData table col-lg-5 col-lg-offset-1">
-                <tr>
-                    <th>№ карты</th>
-                    <th>Наименование товара</th>
-                    <th></th>
-                </tr>
-            </table>
-        </div>
-
-    </form>
-        
     </div>
-    
+    <div class="row">
+        <form runat="server">
+            <div class="contentData col-lg-4 col-lg-offset-1">
+                <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-4" />
+                <table class="tableData table" id="tblGoods">
+                    <tr class="tblHeader">
+                        <th>Товар</th>
+                        <th>Страна</th>
+                        <th>Заказать</th>
+                    </tr>
+
+                </table>
+            </div>
+            <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
+
+            <div class="shoppingCart row">
+                <div class="col-lg-5 col-lg-offset-1">
+                    <h4>Карта №</h4>
+                    <table class="tableData table" id="tblShoppinCart">
+                        <tr>
+                            <th>Наименование товара</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.3.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -52,11 +55,15 @@
         $(document).ready(function () {
             console.log("Перед выбором списка");
             $('#ddlCountries').change(function () {
-                //console.log("ID страны "+$('#ddlCountries').val());
                 GetData();
                 GetCities();
             });
-
+            
+        });
+        $(document).ready(function() {
+            $('#linkOrder').click(function() {
+                console.log('Кликнуло');
+            });
         });
         function GetData() {
             console.log("Перед срабатыванием ajax");
@@ -68,10 +75,10 @@
                 url: "getDataHandler.ashx",
                 dataType: "html",
                 success: function (html) {
-                    console.log("Сработал ajax");
-                    $('.tableData').append(html);
+                    $('#tblGoods').append(html);
                 }
             });
+            
         };
         function GetCities() {
             $('#city').find("option").remove();
@@ -86,6 +93,19 @@
                 }
             });
         };
+
+        function GetOrderedParts(productId) {
+            $.ajax({
+                type: "get",
+                contentType: "application/json; charset=utf-8",
+                data: "ProductId=" + productId,
+                url: "getProductHandler.ashx",
+                dataType: "html",
+                success: function (html) {
+                    $('#tblShoppinCart').append(html);
+                }
+            });
+        }
     </script>
 </body>
 </html>
