@@ -34,6 +34,7 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 				ddlCountries.DataValueField = "countryID";
 				ddlCountries.DataTextField = "name";
 				ddlCountries.DataBind();
+				ddlCountries.Items.Insert(0,"Выберите страну");
 				}
 			}
 		}

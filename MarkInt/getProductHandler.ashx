@@ -10,7 +10,7 @@ public class getProductHandler : IHttpHandler {
         context.Response.ContentType = "text/html";
 
         string connect = Constants.conString;
-        string query = "SELECT goodsID, name FROM Goods WHERE goodsID=@goodsID";
+        string query = "SELECT goodsID, name FROM Goods WHERE goodsID=@ProductId";
         string productId = context.Request.QueryString["ProductId"];
 
         if(productId != null)
@@ -27,9 +27,8 @@ public class getProductHandler : IHttpHandler {
                         while(rdr.Read())
                             {
                             context.Response.Write("<tr>");
-                            context.Response.Write("<td>" + rdr["name"] + "</td>");
+                            context.Response.Write("<td value=\""+productId+"\">" + rdr["name"] + "</td>");
                             context.Response.Write("</tr>");
-
                             }
                         }
                     }
