@@ -19,14 +19,13 @@
     <div class="row">
         <form runat="server">
             <div class="contentData col-lg-4 col-lg-offset-1">
-                <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-4" />
+                <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-5" />
                 <table class="tableData table" id="tblGoods">
                     <tr class="tblHeader">
                         <th>Товар</th>
                         <th>Страна</th>
                         <th>Заказать</th>
                     </tr>
-
                 </table>
             </div>
             <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
@@ -39,6 +38,7 @@
                             <th>Наименование товара</th>
                         </tr>
                     </table>
+                    <button class="function-button">Оформить заказ</button>
                 </div>
             </div>
 
@@ -61,8 +61,8 @@
             
         });
         $(document).ready(function() {
-            $('#linkOrder').click(function() {
-                console.log('Кликнуло');
+            $('#tblGoods').on('click','#linkOrder', function (event) {
+                GetOrderedParts($(this).attr('value'));
             });
         });
         function GetData() {
