@@ -12,16 +12,17 @@ using System.Web.UI.WebControls;
 
 public partial class dataLoadWithAjax : System.Web.UI.Page
 {
-	private string connect = Constants.conString;
+	static HttpCookie cookie=new HttpCookie("shopingCartCookies");
+	private static string connect = Constants.conString;
 	string query = "SELECT countryID, name FROM Countries";
-    protected void Page_Load(object sender, EventArgs e)
-    {
+	protected void Page_Load(object sender, EventArgs e)
+		{
 
-	    if (!Page.IsPostBack)
-	    {
-		    BindData();
-	    }
-    }
+		if(!Page.IsPostBack)
+			{
+			BindData();
+			}
+		}
 
 	private void BindData()
 		{
@@ -34,8 +35,66 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 				ddlCountries.DataValueField = "countryID";
 				ddlCountries.DataTextField = "name";
 				ddlCountries.DataBind();
-				ddlCountries.Items.Insert(0,"Выберите страну");
+				ddlCountries.Items.Insert(0, "Выберите страну");
 				}
 			}
 		}
-}
+	//Метод для добавления товаров в карточку
+	[WebMethod]
+	public static void AddProductToCart(string productId)
+		{
+		
+		string description = "";
+		string idCart = "";
+		string sqlInsertShoppingCards = string.Format("Insert Into ShoppingCards" +
+		 "(Description) Values('{0}')", description);
+
+		using (SqlConnection conn = new SqlConnection(connect))
+		{
+			using (SqlCommand command = conn.CreateCommand())
+			{
+				 //Делаем проверку, есть ли карточка
+				if (cookie["idCart"] == "")
+				{
+					command.CommandText = sqlInsertShoppingCards;
+					command.ExecuteNonQuery();
+					command.CommandText = "SELECT @@IDENTITY";
+					idCart = command.ExecuteScalar().ToString();
+					cookie["idCart"] = idCart;
+					command.CommandText = string.Format("Insert Into CardsGoods (goodsID,cardID) Values('{0}','{1}')",  Int32.Parse(productId), Int32.Parse(idCart));;
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					idCart = cookie["idCart"];
+					command.CommandText =string.Format("Insert Into CardsGoods (goodsID,cardID) Values('{0}','{1}')",  Int32.Parse(productId), Int32.Parse(idCart));;
+					command.ExecuteNonQuery();
+				}
+				conn.Close();
+			}
+		}
+
+
+		}
+	//Метод для получения списка товаров в карточке
+	}
+//Создаем классы сущностей
+public class Goods
+	{
+	public int GoodsId { get; set; }
+	public string Name { get; set; }
+	public int CountryId { get; set; }
+	}
+
+public class ShoppingCards
+	{
+	public int CardId { get; set; }
+	public string Description { get; set; }
+	}
+
+public class CardsGoods
+	{
+	public int CardsGoodsID { get; set; }
+	public int GoodsId { get; set; }
+	public int CardId { get; set; }
+	}

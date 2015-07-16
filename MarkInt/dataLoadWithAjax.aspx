@@ -61,7 +61,8 @@
             
         });
         $(document).ready(function() {
-            $('#tblGoods').on('click','#linkOrder', function (event) {
+            $('#tblGoods').on('click', '#linkOrder', function (event) {
+                InsertOrderedPart($(this).attr('value'));
                 GetOrderedParts($(this).attr('value'));
             });
         });
@@ -93,6 +94,21 @@
                 }
             });
         };
+
+        function InsertOrderedPart(productId) {
+            console.log("Значение Id " + productId);
+            $.ajax({
+                type: "post",
+                contentType: "application/json; charset=utf-8",
+                data: "{ 'productId': '" + productId + "'}",
+                url: "dataLoadWithAjax.aspx/AddProductToCart",
+                dataType: "html",
+                success: function (response) {
+                    alert("User has been added successfully.");
+                    window.location.reload();;
+                }
+            });
+        }
 
         function GetOrderedParts(productId) {
             $.ajax({
