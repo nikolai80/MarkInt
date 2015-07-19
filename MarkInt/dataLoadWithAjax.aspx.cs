@@ -41,18 +41,21 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 		}
 	//Метод для добавления товаров в карточку
 	[WebMethod]
-	public static void AddProductToCart(string productId)
+	public static string AddProductToCart(string productId)
 		{
 		
 		string description = "";
 		string idCart = "";
 		string sqlInsertShoppingCards = string.Format("Insert Into ShoppingCards" +
 		 "(Description) Values('{0}')", description);
-
+		try
+		{
 		using (SqlConnection conn = new SqlConnection(connect))
 		{
+			
 			using (SqlCommand command = conn.CreateCommand())
 			{
+			conn.Open();
 				 //Делаем проверку, есть ли карточка
 				if (cookie["idCart"] == "")
 				{
@@ -73,8 +76,13 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 				conn.Close();
 			}
 		}
+			return "Success";
+		}
+		catch (Exception ex)
+		{
 
-
+		return "failure";
+		}
 		}
 	//Метод для получения списка товаров в карточке
 	}
