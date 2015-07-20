@@ -95,18 +95,18 @@
             });
         };
 
-        function InsertOrderedPart(productId) {
-            var jsonText = { productId:productId};
-            console.log("Значение Id " + jsonText); 
+        function InsertOrderedPart(id) {
+            console.log("Значение Id " + id);
+            var dataValue = { productId: id };
             $.ajax({
-                type: "POST",
+                type: "post",
                 contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({ productId: productId }),
+                data:JSON.stringify(dataValue),
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
                 dataType: "json",
                 success: function (response) {
-                    alert("User has been added successfully.");
-                    window.location.reload();;
+                    alert("User has been added successfully."+response);
+                    //window.location.reload();;
                 }
             });
         }
