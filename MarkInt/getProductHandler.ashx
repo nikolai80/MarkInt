@@ -10,16 +10,18 @@ public class getProductHandler : IHttpHandler {
         context.Response.ContentType = "text/html";
 
         string connect = Constants.conString;
-        string query = "SELECT goodsID, name FROM Goods WHERE goodsID=@ProductId";
-        string productId = context.Request.QueryString["ProductId"];
+        string query = "SELECT cg.goodsID as goodsID, g.name as name FROM CardsGoods cg LEFT JOIN Goods g ON cg.goodsID=g.goodsID WHERE cg.cardID=@CardId";
 
-        if(productId != null)
+        HttpCookie cookie = context.Request.Cookies["shopingCartCookies"];
+        string cardId = cookie["idCart"];
+
+        if(!String.IsNullOrEmpty(cardId))
             {
             using(SqlConnection conn = new SqlConnection(connect))
                 {
                 using(SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                    cmd.Parameters.AddWithValue("ProductId", productId);
+                    cmd.Parameters.AddWithValue("CardId", cardId);
                     conn.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
                     if(rdr.HasRows)
@@ -27,7 +29,7 @@ public class getProductHandler : IHttpHandler {
                         while(rdr.Read())
                             {
                             context.Response.Write("<tr>");
-                            context.Response.Write("<td value=\""+productId+"\">" + rdr["name"] + "</td>");
+                            context.Response.Write("<td value=\""+rdr["goodsID"]+"\">" + rdr["name"] + "</td>");
                             context.Response.Write("</tr>");
                             }
                         }
@@ -37,7 +39,7 @@ public class getProductHandler : IHttpHandler {
             }
         else
             {
-            context.Response.Write("<tr><td>No</td><td>No</td></tr>");
+            context.Response.Write("");
             }
 
         context.Response.End();

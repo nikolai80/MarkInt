@@ -64,11 +64,10 @@
         $(document).ready(function () {
             $('#tblGoods').on('click', '#linkOrder', function (event) {
                 InsertOrderedPart($(this).attr('value'));
-                GetOrderedParts($(this).attr('value'));
+                //GetOrderedParts();
             });
         });
         function GetData() {
-            console.log("Перед срабатыванием ajax");
             $('.tableData').find("tr:gt(0)").remove();
             $.ajax({
                 type: "GET",
@@ -105,18 +104,18 @@
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
                 dataType: "json",
                 success: function (response) {
-
-                    alert("User has been added successfully." + response.val());
+                    GetOrderedParts();
+                    alert("User has been added successfully.");
                     //window.location.reload();;
                 }
             });
         }
 
-        function GetOrderedParts(productId) {
+        function GetOrderedParts() {
             $.ajax({
-                type: "get",
+                type: "post",
                 contentType: "application/json; charset=utf-8",
-                data: "ProductId=" + productId,
+                data: {},
                 url: "getProductHandler.ashx",
                 dataType: "html",
                 success: function (html) {

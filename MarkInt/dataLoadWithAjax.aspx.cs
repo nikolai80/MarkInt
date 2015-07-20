@@ -13,6 +13,7 @@ using System.Web.UI.WebControls;
 public partial class dataLoadWithAjax : System.Web.UI.Page
 {
 	static HttpCookie cookie=new HttpCookie("shopingCartCookies");
+	
 	private static string connect = Constants.conString;
 	string query = "SELECT countryID, name FROM Countries";
 	protected void Page_Load(object sender, EventArgs e)
@@ -21,6 +22,7 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 		if(!Page.IsPostBack)
 			{
 			BindData();
+			Response.Cookies.Add(cookie);
 			}
 		}
 
