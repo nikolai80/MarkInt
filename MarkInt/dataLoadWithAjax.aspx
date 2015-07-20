@@ -18,21 +18,22 @@
     </div>
     <div class="row">
         <form runat="server">
-            <div class="contentData col-lg-4 col-lg-offset-1">
-                <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-5" />
-                <table class="tableData table" id="tblGoods">
-                    <tr class="tblHeader">
-                        <th>Товар</th>
-                        <th>Страна</th>
-                        <th>Заказать</th>
-                    </tr>
-                </table>
+            <div class="row">
+                <div class="contentData col-lg-4 col-lg-offset-1">
+                    <asp:DropDownList runat="server" ID="ddlCountries" class="col-lg-5" />
+                    <table class="tableData table" id="tblGoods">
+                        <tr class="tblHeader">
+                            <th>Товар</th>
+                            <th>Страна</th>
+                            <th>Заказать</th>
+                        </tr>
+                    </table>
+                </div>
+                <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
             </div>
-            <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
-
             <div class="shoppingCart row">
                 <div class="col-lg-5 col-lg-offset-1">
-                    <h4>Карта №</h4>
+                    <h4>Заказанные товары</h4>
                     <table class="tableData table" id="tblShoppinCart">
                         <tr>
                             <th>Наименование товара</th>
@@ -58,9 +59,9 @@
                 GetData();
                 GetCities();
             });
-            
+
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#tblGoods').on('click', '#linkOrder', function (event) {
                 InsertOrderedPart($(this).attr('value'));
                 GetOrderedParts($(this).attr('value'));
@@ -79,7 +80,7 @@
                     $('#tblGoods').append(html);
                 }
             });
-            
+
         };
         function GetCities() {
             $('#city').find("option").remove();
@@ -96,16 +97,16 @@
         };
 
         function InsertOrderedPart(id) {
-            console.log("Значение Id " + id);
             var dataValue = { productId: id };
             $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf-8",
-                data:JSON.stringify(dataValue),
+                data: JSON.stringify(dataValue),
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
                 dataType: "json",
                 success: function (response) {
-                    alert("User has been added successfully."+response);
+
+                    alert("User has been added successfully." + response.val());
                     //window.location.reload();;
                 }
             });

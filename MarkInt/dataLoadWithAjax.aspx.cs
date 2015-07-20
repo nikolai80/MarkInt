@@ -57,7 +57,7 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 			{
 			conn.Open();
 				 //Делаем проверку, есть ли карточка
-				if (cookie["idCart"] == "")
+			if(String.IsNullOrEmpty(cookie["idCart"]))
 				{
 					command.CommandText = sqlInsertShoppingCards;
 					command.ExecuteNonQuery();
@@ -80,7 +80,6 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 		}
 		catch (Exception ex)
 		{
-
 		return "failure";
 		}
 		}
