@@ -96,13 +96,14 @@
         };
 
         function InsertOrderedPart(productId) {
-            console.log("Значение Id " + productId);
+            var jsonText = { productId:productId};
+            console.log("Значение Id " + jsonText); 
             $.ajax({
-                type: "post",
+                type: "POST",
                 contentType: "application/json; charset=utf-8",
-                data: "{ 'productId': '" + productId + "'}",
+                data: JSON.stringify({ productId: productId }),
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
-                dataType: "html",
+                dataType: "json",
                 success: function (response) {
                     alert("User has been added successfully.");
                     window.location.reload();;
