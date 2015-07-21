@@ -13,7 +13,7 @@ public class getProductHandler : IHttpHandler {
         string query = "SELECT cg.goodsID as goodsID, g.name as name FROM CardsGoods cg LEFT JOIN Goods g ON cg.goodsID=g.goodsID WHERE cg.cardID=@CardId";
 
         HttpCookie cookie = context.Request.Cookies["shopingCartCookies"];
-        string cardId = cookie["idCart"];
+        string cardId = context.Request.QueryString["CardId"];
 
         if(!String.IsNullOrEmpty(cardId))
             {

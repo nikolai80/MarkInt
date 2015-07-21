@@ -105,7 +105,8 @@
                 dataType: "json",
                 success: function (response) {
                     GetOrderedParts();
-                    alert("User has been added successfully.");
+                    console.log(document.cookie);
+                    alert("User has been added successfully." + response.d);
                     //window.location.reload();;
                 }
             });
@@ -115,13 +116,20 @@
             $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf-8",
-                data: {},
-                url: "getProductHandler.ashx",
-                dataType: "html",
-                success: function (html) {
-                    $('#tblShoppinCart').append(html);
+                data:"{}",
+                url: "dataLoadWithAjax.aspx/GetSelectedProduct",
+                dataType: "json",
+                success: function (data) {
+                    $('#tblShoppinCart').html(data.d);
                 }
             });
+        }
+
+        function GetCookie(name) {
+            var matches = document.cookie.match(new RegExp(
+              "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
         }
     </script>
 </body>
