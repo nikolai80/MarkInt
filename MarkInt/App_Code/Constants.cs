@@ -9,10 +9,9 @@ using System.Web;
 /// </summary>
 public class Constants
 {
-	public const string conString =
-			@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\rybchenko\programs\MarktInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
+	//public const string conString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\rybchenko\programs\MarktInt\MarkInt\App_Data\GoodsDB.mdf;Integrated Security=True";
 
-	//public const string conString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Lichnoe\Documents\MarkInt\MarkInt\App_Data\GoodsDB.mdf";
+	public const string conString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Lichnoe\Documents\MarkInt\MarkInt\App_Data\GoodsDB.mdf";
 	public Constants()
 	{
 	}

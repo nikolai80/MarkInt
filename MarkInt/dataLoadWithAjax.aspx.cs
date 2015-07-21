@@ -96,7 +96,7 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 	[WebMethod]
 	public static string GetSelectedProduct()
 		{
-		var httpContext = HttpContext.Current.Response.Cookies.AllKeys;
+		var httpContext = HttpContext.Current.Request.Cookies["idCart"];
 		string cardId = "";
 		if(httpContext != null)
 			{

@@ -64,7 +64,8 @@
         $(document).ready(function () {
             $('#tblGoods').on('click', '#linkOrder', function (event) {
                 InsertOrderedPart($(this).attr('value'));
-                //GetOrderedParts();
+                console.log("кукисы" + document.cookie);
+                GetOrderedParts();
             });
         });
         function GetData() {
@@ -104,9 +105,9 @@
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
                 dataType: "json",
                 success: function (response) {
-                    GetOrderedParts();
-                    console.log(document.cookie);
-                    alert("User has been added successfully." + response.d);
+                    
+                    console.log(JSON.stringify(document.cookie));
+                    alert("User has been added successfully.");
                     //window.location.reload();;
                 }
             });
