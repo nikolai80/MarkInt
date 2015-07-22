@@ -96,11 +96,11 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 	[WebMethod]
 	public static string GetSelectedProduct()
 		{
-		var httpContext = HttpContext.Current.Request.Cookies["idCart"];
+		HttpCookie cookies = HttpContext.Current.Request.Cookies["shopingCartCookies"];
 		string cardId = "";
-		if(httpContext != null)
+		if(cookies != null)
 			{
-			//cardId = httpContext.ToString();
+			cardId = cookies["idCart"];
 			}
 		string response = "No selected goods";
 		string connect = Constants.conString;
@@ -123,6 +123,7 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 							{
 							sb.Append("<tr>");
 							sb.Append("<td value=\"" + rdr["goodsID"] + "\">" + rdr["name"] + "</td>");
+							sb.Append("<td><a class=\"btn btn-primary\" id=\"linkDelOrder\" value=\"" + rdr["goodsID"] + "\">Удалить</a></td>");
 							sb.Append("</tr>");
 							response = sb.ToString();
 							}
@@ -134,6 +135,43 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 
 		return response;
 		}
+
+	[WebMethod]
+	public static string DeleteProductFromCart(string productId)
+	{
+	HttpCookie cookies = HttpContext.Current.Request.Cookies["shopingCartCookies"];
+	string cardId = "";
+	if(cookies != null)
+		{
+		cardId = cookies["idCart"];
+		}
+
+		string query = "DELETE FROM CardsGoods WHERE cardID=@CardId ";
+	try
+		{
+		using(SqlConnection conn = new SqlConnection(connect))
+			{
+
+			using(SqlCommand command = conn.CreateCommand())
+				{
+				conn.Open();
+				//Делаем проверку, есть ли карточка
+				if(String.IsNullOrEmpty(cardId))
+					{
+					command.CommandText = query;
+					command.ExecuteNonQuery();
+					}
+				
+				conn.Close();
+				}
+			}
+		return "success";
+		}
+	catch(Exception ex)
+		{
+		return "failure";
+		}
+	}
 
 	}
 

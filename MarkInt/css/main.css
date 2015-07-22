@@ -48,3 +48,8 @@ h2 {
  }
 
  .priceListImage{ height: 20px;}
+
+ .cart {
+	 background-color: rgba(211,211,211,0.4);
+	 border-radius: 10px;
+ }

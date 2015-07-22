@@ -31,7 +31,7 @@ public class getDataHandler : IHttpHandler
                             context.Response.Write("<tr>");
                             context.Response.Write("<td>" + rdr["name"].ToString() + "</td>");
                             context.Response.Write("<td>" + rdr["country"].ToString() + "</td>");
-                            context.Response.Write("<td><a id=\"linkOrder\" value=\"" + rdr["ID"] + "\">Заказать</></td>");
+                            context.Response.Write("<td><a class=\"btn btn-primary\" id=\"linkOrder\" value=\"" + rdr["ID"] + "\">Заказать</a></td>");
                             context.Response.Write("</tr>");
 
                             }

@@ -32,14 +32,13 @@
                 <asp:DropDownList runat="server" ID="city" class="col-lg-2" />
             </div>
             <div class="shoppingCart row">
-                <div class="col-lg-5 col-lg-offset-1">
+                <div class="col-lg-5 col-lg-offset-1 cart">
                     <h4>Заказанные товары</h4>
                     <table class="tableData table" id="tblShoppinCart">
                         <tr>
                             <th>Наименование товара</th>
                         </tr>
                     </table>
-                    <button class="function-button">Оформить заказ</button>
                 </div>
             </div>
 
@@ -54,17 +53,21 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            console.log("Перед выбором списка");
+            GetOrderedParts();
             $('#ddlCountries').change(function () {
                 GetData();
                 GetCities();
+                GetOrderedParts();
             });
 
         });
         $(document).ready(function () {
             $('#tblGoods').on('click', '#linkOrder', function (event) {
                 InsertOrderedPart($(this).attr('value'));
-                console.log("кукисы" + document.cookie);
+                GetOrderedParts();
+            });
+            $('#tblShoppinCart').on('click', '#linkDelOrder', function (event) {
+                DeleteOrderedPart($(this).attr('value'));
                 GetOrderedParts();
             });
         });
@@ -105,10 +108,23 @@
                 url: "dataLoadWithAjax.aspx/AddProductToCart",
                 dataType: "json",
                 success: function (response) {
-                    
-                    console.log(JSON.stringify(document.cookie));
-                    alert("User has been added successfully.");
-                    //window.location.reload();;
+                    GetOrderedParts();
+                    alert("Товар добавлен в корзину");
+                }
+            });
+        }
+
+        function DeleteOrderedPart(id) {
+            var dataValue = { productId: id };
+            $.ajax({
+                type: "post",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(dataValue),
+                url: "dataLoadWithAjax.aspx/DeleteProductFromCart",
+                dataType: "json",
+                success: function (response) {
+                    GetOrderedParts();
+                    alert("Товар удален из корзины");
                 }
             });
         }
@@ -124,13 +140,6 @@
                     $('#tblShoppinCart').html(data.d);
                 }
             });
-        }
-
-        function GetCookie(name) {
-            var matches = document.cookie.match(new RegExp(
-              "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
         }
     </script>
 </body>
