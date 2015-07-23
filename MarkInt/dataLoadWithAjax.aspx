@@ -8,7 +8,6 @@
     <title>Load data with ajax</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
-
 </head>
 <body>
     <div class="row">
@@ -41,11 +40,8 @@
                     </table>
                 </div>
             </div>
-
         </form>
-
     </div>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.3.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -59,7 +55,6 @@
                 GetCities();
                 GetOrderedParts();
             });
-
         });
         $(document).ready(function () {
             $('#tblGoods').on('click', '#linkOrder', function (event) {
@@ -83,7 +78,6 @@
                     $('#tblGoods').append(html);
                 }
             });
-
         };
         function GetCities() {
             $('#city').find("option").remove();
@@ -98,7 +92,6 @@
                 }
             });
         };
-
         function InsertOrderedPart(id) {
             var dataValue = { productId: id };
             $.ajax({
@@ -113,7 +106,6 @@
                 }
             });
         }
-
         function DeleteOrderedPart(id) {
             var dataValue = { productId: id };
             $.ajax({
@@ -128,12 +120,11 @@
                 }
             });
         }
-
         function GetOrderedParts() {
             $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf-8",
-                data:"{}",
+                data: "{}",
                 url: "dataLoadWithAjax.aspx/GetSelectedProduct",
                 dataType: "json",
                 success: function (data) {

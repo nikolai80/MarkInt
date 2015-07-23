@@ -7,7 +7,6 @@ using System.Web;
 
 public class getDataHandler : IHttpHandler
     {
-
     public void ProcessRequest(HttpContext context)
         {
         context.Response.ContentType = "text/html";
@@ -33,7 +32,6 @@ public class getDataHandler : IHttpHandler
                             context.Response.Write("<td>" + rdr["country"].ToString() + "</td>");
                             context.Response.Write("<td><a class=\"btn btn-primary\" id=\"linkOrder\" value=\"" + rdr["ID"] + "\">Заказать</a></td>");
                             context.Response.Write("</tr>");
-
                             }
                         }
                     }
@@ -47,7 +45,6 @@ public class getDataHandler : IHttpHandler
 
         context.Response.End();
         }
-
     public bool IsReusable
         {
         get

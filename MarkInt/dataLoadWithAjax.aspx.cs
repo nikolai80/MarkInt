@@ -135,43 +135,45 @@ public partial class dataLoadWithAjax : System.Web.UI.Page
 
 		return response;
 		}
-
+	//Метод для удаления выбранного товара 
 	[WebMethod]
 	public static string DeleteProductFromCart(string productId)
-	{
-	HttpCookie cookies = HttpContext.Current.Request.Cookies["shopingCartCookies"];
-	string cardId = "";
-	if(cookies != null)
 		{
-		cardId = cookies["idCart"];
-		}
-
-		string query = "DELETE FROM CardsGoods WHERE cardID=@CardId ";
-	try
-		{
-		using(SqlConnection conn = new SqlConnection(connect))
+		HttpCookie cookies = HttpContext.Current.Request.Cookies["shopingCartCookies"];
+		string cardId = "";
+		if(cookies != null)
 			{
-
-			using(SqlCommand command = conn.CreateCommand())
-				{
-				conn.Open();
-				//Делаем проверку, есть ли карточка
-				if(String.IsNullOrEmpty(cardId))
-					{
-					command.CommandText = query;
-					command.ExecuteNonQuery();
-					}
-				
-				conn.Close();
-				}
+			cardId = cookies["idCart"];
 			}
-		return "success";
+
+		string query = "DELETE TOP(1) FROM CardsGoods WHERE cardID=@CardId AND goodsID=@GoodsId";
+		try
+			{
+			using(SqlConnection conn = new SqlConnection(connect))
+				{
+
+				using(SqlCommand command = conn.CreateCommand())
+					{
+					conn.Open();
+					//Делаем проверку, есть ли карточка
+					if(!String.IsNullOrEmpty(cardId))
+						{
+						command.Parameters.AddWithValue("CardId", cardId);
+						command.Parameters.AddWithValue("GoodsId", productId);
+						command.CommandText = query;
+						command.ExecuteNonQuery();
+						}
+
+					conn.Close();
+					}
+				}
+			return "success";
+			}
+		catch(Exception ex)
+			{
+			return "failure";
+			}
 		}
-	catch(Exception ex)
-		{
-		return "failure";
-		}
-	}
 
 	}
 
